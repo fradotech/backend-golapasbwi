@@ -15,7 +15,7 @@ const morgan = require('morgan')
 const { cors } = require('./app/middlewares/cors')
 const { errorHandler } = require('./app/functions/errorHandler')
 
-app.use(session({ secret: process.env.SECRET_KEY }))
+app.use(session({ secret: 'process.env.SECRET_KEY' }))
 app.use(passport.initialize())
 app.use(passport.session())
 app.use(morgan('dev'))
