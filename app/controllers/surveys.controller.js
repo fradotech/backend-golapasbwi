@@ -4,6 +4,18 @@ const response = require('../functions/serviceUtil.js');
 module.exports = {
   name: 'surveysController',
 
+  questions: async (req, res, next) => {
+    try {
+      const questions = await models.Question.findAll()
+      if (!questions) res.status(404).send(response.getErrorResponseCustom(404, 'Questions not found')).res.end()
+
+      res.status(200).send(response.getResponseCustom(200, questions))
+      res.end()
+    } catch (error) {
+      next(error)
+    }
+  },
+  
   create: async (req, res, next) => {
     try {
       const result = await models.sequelize.transaction(async (transaction) => {
