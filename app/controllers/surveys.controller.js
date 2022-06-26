@@ -50,7 +50,14 @@ module.exports = {
 
   find: async (req, res, next) => {
     try {
-      const surveys = await models.Survey.findAll()
+      const surveys = await models.Survey.findAll({
+        include: [{
+          model: models.Answer,
+          include: [{
+            model: models.Question
+          }]
+        }]
+      });
       if (!surveys) res.status(404).send(response.getErrorResponseCustom(404, 'Surveys not found')).res.end()
 
       res.status(200).send(response.getResponseCustom(200, surveys))
