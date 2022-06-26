@@ -15,6 +15,10 @@ module.exports = {
         allowNull: false,
         type: DataTypes.STRING,
       },
+      satisfaction: {
+        allowNull: false,
+        type: DataTypes.INTEGER,
+      },
       created_at: {
         allowNull: false,
         type: DataTypes.DATE,

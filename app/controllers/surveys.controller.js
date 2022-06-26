@@ -8,13 +8,20 @@ module.exports = {
     try {
       const result = await models.sequelize.transaction(async (transaction) => {
         const createSurvey = new models.Survey()
+        const answers = req.body.answers
+
         createSurvey.name = req.body.name
         createSurvey.suggestion = req.body.suggestion
+        createSurvey.satisfaction = 0
 
-        const initSurvey = await models.Survey.create(createSurvey.dataValues, { transaction })
+        answers.forEach(answer => {
+          createSurvey.satisfaction += answer
+        });
 
-        const survey_id = initSurvey.id
-        const answers = req.body.answers
+        createSurvey.satisfaction = createSurvey.satisfaction / 65 * 100
+
+        const survey = await models.Survey.create(createSurvey.dataValues, { transaction })
+        const survey_id = survey.id
 
         await Promise.all([
           models.Answer.create({ survey_id, question_id: 1, answer: answers[0] }, { transaction }),
@@ -32,13 +39,7 @@ module.exports = {
           models.Answer.create({ survey_id, question_id: 13, answer: answers[12] }, { transaction }),
         ])
 
-        const createdSurvey = await models.Survey.findAll({ 
-          include: models.Answer 
-        }, {
-          transaction,
-        })
-
-        return createdSurvey
+        return survey
       })
 
       res.status(200).send(response.getResponseCustom(200, result))
