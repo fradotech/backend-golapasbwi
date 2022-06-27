@@ -34,7 +34,7 @@ module.exports = {
           createSurvey.satisfaction += answer
         });
 
-        createSurvey.satisfaction = parseInt(createSurvey.satisfaction / 65 * 100)
+        createSurvey.satisfaction = parseInt(createSurvey.satisfaction / 45 * 100)
 
         const survey = await models.Survey.create(createSurvey.dataValues, { transaction })
         const survey_id = survey.id
