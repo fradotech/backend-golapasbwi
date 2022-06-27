@@ -6,11 +6,7 @@ module.exports = {
         {
           question: 'Informasi pelayanan pada unit layanan lapas banyuwangi tersedia melalui media elektronik maupun non elektronik',
         }, {
-          question: 'Persyaratan pelayanan yang diinformasikan sesuai dengan persyaratan yang ditetapkan unit layanan lapas banyuwangi',
-        }, {
           question: 'Prosedur/Alur pelayanan yang ditetapkan unit layanan ini mudah diikuti/dilakukan',
-        }, {
-          question: 'Jangka waktu penyelesaian pelayanan yang diterima Bapak/Ibu sesuai dengan yang ditetapkan unit layanan lapas banyuwangi',
         }, {
           question: 'Sarana prasarana pendukung pelayanan/sistem pelayanan online yang disediakan unit layanan lapas banyuwangi memberikan kenyamanan/mudah digunakan',
         }, {
@@ -25,11 +21,11 @@ module.exports = {
           question: 'Tidak ada penerimaan imbalan uang/barang/fasilitas diluar ketentuan yang berlaku pada unit layanan lapas banyuwangi',
         }, {
           question: 'Tidak ada pungutan liar (pungli) pada unit layanan lapas banyuwangi',
-        }, {
-          question: 'Tidak ada percaloan/perantara tidak resmi pada unit layanan lapas banyuwangi',
-        }, {
-          question: 'Sebelum menjawab survei ini, apakah ada pegawai/pejabat pada unit layanan ini yang mengarahkan Bapak/Ibu untuk memberikan jawaban yang bagus-bagus/baik-baik saja? (Ya/Tidak)',
-        }, 
+        }
+        
+        // {
+        //   question: 'Sebelum menjawab survei ini, apakah ada pegawai/pejabat pada unit layanan ini yang mengarahkan Bapak/Ibu untuk memberikan jawaban yang bagus-bagus/baik-baik saja? (Ya/Tidak)',
+        // }, 
       ],
       {},
     );

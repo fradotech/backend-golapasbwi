@@ -24,6 +24,10 @@ module.exports = {
 
         createSurvey.name = req.body.name
         createSurvey.suggestion = req.body.suggestion
+        createSurvey.address = req.body.address
+        createSurvey.age = req.body.age
+        createSurvey.job = req.body.job
+        createSurvey.disuruh = req.body.disuruh
         createSurvey.satisfaction = 0
 
         answers.forEach(answer => {
@@ -45,10 +49,6 @@ module.exports = {
           models.Answer.create({ survey_id, question_id: 7, answer: answers[6] }, { transaction }),
           models.Answer.create({ survey_id, question_id: 8, answer: answers[7] }, { transaction }),
           models.Answer.create({ survey_id, question_id: 9, answer: answers[8] }, { transaction }),
-          models.Answer.create({ survey_id, question_id: 10, answer: answers[9] }, { transaction }),
-          models.Answer.create({ survey_id, question_id: 11, answer: answers[10] }, { transaction }),
-          models.Answer.create({ survey_id, question_id: 12, answer: answers[11] }, { transaction }),
-          models.Answer.create({ survey_id, question_id: 13, answer: answers[12] }, { transaction }),
         ])
 
         return survey

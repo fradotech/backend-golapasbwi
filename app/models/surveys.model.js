@@ -18,6 +18,29 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         type: DataTypes.STRING,
       },
+      address: {
+        allowNull: false,
+        type: DataTypes.STRING,
+      },
+      age: {
+        allowNull: false,
+        type: DataTypes.ENUM('20', '21-40', '41-60', '60+'),
+      },
+      job: {
+        allowNull: false,
+        type: DataTypes.ENUM(
+          'Pelajar/Mahasiswa', 
+          'Pegawai Negeri', 
+          'Pegawai Swasta', 
+          'TNI/Polri',
+          'Wiraswasta',
+          'Lainnya'
+        ),
+      },
+      disuruh: {
+        allowNull: false,
+        type: DataTypes.ENUM('Ya', 'Tidak'),
+      },
       suggestion: {
         allowNull: false,
         type: DataTypes.STRING,
