@@ -17,7 +17,7 @@ module.exports = {
       },
       age: {
         allowNull: false,
-        type: DataTypes.ENUM('20', '21-40', '41-60', '60+'),
+        type: DataTypes.ENUM('20-', '21-40', '41-60', '60+'),
       },
       job: {
         allowNull: false,

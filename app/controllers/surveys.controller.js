@@ -69,7 +69,8 @@ module.exports = {
           include: [{
             model: models.Question
           }]
-        }]
+        }],
+        order: [['updatedAt', 'DESC']]
       });
       if (!surveys) res.status(404).send(response.getErrorResponseCustom(404, 'Surveys not found')).res.end()
 
@@ -98,6 +99,32 @@ module.exports = {
       if (!survey) res.status(404).send(response.getErrorResponseCustom(404, 'Survey not found')).res.end()
 
       res.status(200).send(response.getResponseCustom(200, survey))
+      res.end()
+    } catch (error) {
+      next(error)
+    }
+  },
+
+  statistic: async (req, res, next) => {
+    try {
+      const statistics = {
+        age: await Promise.all([
+          models.Survey.count({ where: { age: '20-'}}),
+          models.Survey.count({ where: { age: '21-40'}}),
+          models.Survey.count({ where: { age: '41-60'}}),
+          models.Survey.count({ where: { age: '60+'}})
+        ]),
+        job: await Promise.all([
+          models.Survey.count({ where: { job: 'Pelajar/Mahasiswa'}}),
+          models.Survey.count({ where: { job: 'Pegawai Negeri'}}),
+          models.Survey.count({ where: { job: 'Pegawai Swasta'}}),
+          models.Survey.count({ where: { job: 'TNI/Polri'}}),
+          models.Survey.count({ where: { job: 'Wiraswasta'}}),
+          models.Survey.count({ where: { job: 'Lainnya'}}),
+        ]),
+      }
+
+      res.status(200).send(response.getResponseCustom(200, statistics))
       res.end()
     } catch (error) {
       next(error)
