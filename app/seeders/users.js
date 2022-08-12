@@ -4,10 +4,15 @@ module.exports = {
       'users',
       [
         {
-          email: 'rizam.admin@fradotech.id',
-          password: '$2b$10$NteiAbfGrOjh76Wne204Z.M5HeFP.Yzc5s8so6k0opoCzmu0k.q3W', // fradoo
+          email: 'fradotech.id@gmail.com',
+          password: '$2b$10$8lf20ohMt6YbudLCkFeoMO.U6FxUhnhjQhSJ9ei9AHIppTUFJg.kS',
+          name: 'Admin Frado',
+        },
+        {
+          email: 'skm@golapasbwi.com',
+          password: '$2b$10$1TD4BMqr4RvRxEwPckiLGe3QffVdWTgsjkLHGwfs4ZhaWP1S3EHrS',
           name: 'Admin Rizam',
-        }
+        },
       ],
       {},
     );

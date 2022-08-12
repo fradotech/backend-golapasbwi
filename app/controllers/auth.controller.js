@@ -6,6 +6,29 @@ const CustomError = require('../functions/CustomError');
 module.exports = {
   name: 'authController',
 
+  register: async (req, res, next) => {
+    try {
+      const result = await models.sequelize.transaction(async (transaction) => {
+        const user = models.User
+        if (!req.body.email) throw new CustomError('email Attribute is required', 412)
+        if (!req.body.password) throw new CustomError('password Attribute is required', 412)
+
+        user.email = req.body.email
+        user.password = req.body.password
+
+        const redisteredUser = await models.User.create(user)
+
+        return redisteredUser
+      })
+
+      res.status(200).send(response.getResponseCustom(200, result))
+      res.end()
+      
+    } catch (error) {
+      next(error)
+    }
+  },
+
   login: async (req, res, next) => {
     try {
       const result = await models.sequelize.transaction(async (transaction) => {
